@@ -289,4 +289,3 @@ class CarDeleteTestCase(TestCase):
         url = reverse("car-delete", kwargs={"car_id":self.car_id})
         response = self.client.get(url)
         self.assertFalse(Car.objects.filter(id=self.car_id).exists())
-

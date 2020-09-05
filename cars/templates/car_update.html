@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Update{% endblock title %}
+
+{% block content %}
+<div class="jumbotron m-3 rounded jumbotron-update">
+  <form action="{% url 'car-update' car_obj.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+
+    <button type="submit" name="button" class="btn btn-md mt-4 btn-success" data-toggle="tooltip" data-placement="bottom" title="Update">Update</button>
+  </form>
+</div>
+{% endblock content %}

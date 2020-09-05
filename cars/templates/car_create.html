@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Car{% endblock title %}
+
+{% block content %}
+<div class="jumbotron m-5 rounded">
+
+  <form action="{% url 'car-create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+
+    <button type="submit" name="button" class="btn btn-md mt-4 btn-success" data-toggle="tooltip" data-placement="bottom" title="Create">Create</button>
+
+
+  </form>
+
+</div>
+
+{% endblock content %}

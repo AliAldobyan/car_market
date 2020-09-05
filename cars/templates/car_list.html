@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Car List</title>
-</head>
-<body>
-	{% for car in cars %}
-		<a href="{{car.get_absolute_url}}">
-			<h1>
-				{{car.make}} - {{car.model}}
-				<small>
-					{{car.year}}
-				</small>
-			</h1>
-		</a>
-		<hr>
-	{% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+		Car list
+{% endblock title %}
+
+{% block content %}
+	<div class="row row-cols-1 row-cols-md-2 m-5">
+
+		{% for car in cars %}
+
+			<div class="col mb-4">
+				<div class="card">
+					<a href="{% url 'car-detail' car.id %}">
+					{%if car.img %}
+						<img src="{{car.img.url}}" class="card-img-top"  alt="..."></a>
+					{% endif %}
+					<div class="card-body">
+						<h5 class="card-title">{{car.make}} - {{car.model}}</h5>
+						<p class="card-text">{{car.year}}</p>
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+
+	</div>
+{% endblock content %}
