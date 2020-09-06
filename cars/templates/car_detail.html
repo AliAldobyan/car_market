@@ -4,27 +4,24 @@
 
 {% block content %}
 
-<div class="jumbotron m-3 rounded jumbotron-detail">
+<div class="jumbotron m-5 rounded ">
 
 
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{car.make}}</h5>
-        <p class="card-text">{{ca.model}}</p>
+        <p class="card-text">{{car.model}}</p>
         <p class="card-text"><small class="text-muted">Year: {{car.year}}</small></p>
       </div>
 			{%if car.img %}
-					<img class="card-img-bottom"  src="{{car.img.url}}"  alt="...">
+					<img class="card-img-bottom"  src="{{car.img.url}}"  class="img-fluid">
 			{% endif %}
+
+        <a href="{% url 'car-update' car.id %}" class="btn btn-outline-info btn-block my-2">Update</a>
+        <a href="{% url 'car-delete' car.id %}" class="btn btn-outline-danger btn-block">Delete</a>
 
     </div>
 
-
-    <a href="{% url 'car-update' car.id %}">
-        <button type="submit" name="button" class="btn btn-md btn-success m-3" data-toggle="tooltip" data-placement="bottom" title="Update">Update</button>
-    </a>
-    <a href="{% url 'car-delete' car.id %}">
-        <button type="submit" name="button" class="btn btn-md btn-danger mt3" data-toggle="tooltip" data-placement="bottom" title="Delete">Delete</button>
-    </a>
 </div>
-{% endblock content %}
+
+{% endblock %}
